@@ -24,7 +24,12 @@ public class TaskService {
         return taskRepository.save(task);
     }
     
-    
+    //Retrieve all tasks
+	public List<Task> getAllTasks() {
+        logger.info("Fetching all tasks from the DB...");
+        return taskRepository.findAll();
+    }
+	
 
 
 }
