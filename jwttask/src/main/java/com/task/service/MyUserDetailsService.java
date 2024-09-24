@@ -1,4 +1,4 @@
-package com.jwt.service;
+package com.task.service;
 
 import java.util.Collections;
 
@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.jwt.model.UserInfo;
-import com.jwt.repo.UserRepository;
+import com.task.model.UserInfo;
+import com.task.repo.UserRepository;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {

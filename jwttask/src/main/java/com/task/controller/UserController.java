@@ -1,4 +1,4 @@
-package com.jwt.controller;
+package com.task.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jwt.model.UserInfo;
-import com.jwt.repo.UserRepository;
+import com.task.model.UserInfo;
+import com.task.repo.UserRepository;
 
 @RestController
  public class UserController {

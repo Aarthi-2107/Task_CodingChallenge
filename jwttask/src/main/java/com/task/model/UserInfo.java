@@ -1,4 +1,4 @@
-package com.jwt.model;
+package com.task.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

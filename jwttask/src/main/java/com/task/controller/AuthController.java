@@ -1,4 +1,4 @@
-package com.jwt.controller;
+package com.task.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jwt.JwtUtil;
-import com.jwt.model.UserInfo;
-import com.jwt.service.MyUserDetailsService;
+import com.task.JwtUtil;
+import com.task.model.UserInfo;
+import com.task.service.MyUserDetailsService;
 
 @RestController
 public class AuthController {

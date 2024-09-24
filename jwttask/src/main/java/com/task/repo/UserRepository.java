@@ -1,8 +1,8 @@
-package com.jwt.repo;
+package com.task.repo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.jwt.model.UserInfo;
+import com.task.model.UserInfo;
 
 import java.util.Optional;
 
