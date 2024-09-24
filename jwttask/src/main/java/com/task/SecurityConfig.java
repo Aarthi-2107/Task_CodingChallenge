@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/token").permitAll()
                         .requestMatchers("/auth/signup").permitAll()
+                        .requestMatchers("/task/add").permitAll()
                         
                         
                         .anyRequest().authenticated()
