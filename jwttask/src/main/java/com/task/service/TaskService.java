@@ -55,7 +55,23 @@ public class TaskService {
         taskRepository.deleteById(taskId);
     }
 	
-	
+	//Update an existing task
+	public Task updateTask(int taskId, Task newTask) throws InvalidIdException {
+        Optional<Task> optionalTask = taskRepository.findById(taskId);
+        if (optionalTask.isEmpty()) {
+            throw new InvalidIdException("Invalid Task ID Given");
+        }
+        
+        Task taskDB = optionalTask.get();
+
+        taskDB.setTitle(newTask.getTitle());
+        taskDB.setDescription(newTask.getDescription());
+        taskDB.setDueDate(newTask.getDueDate());
+        taskDB.setTaskPriority(newTask.getTaskPriority());
+        taskDB.setTaskStatus(newTask.getTaskStatus());
+
+        return taskRepository.save(taskDB);
+    }
 	
 
 

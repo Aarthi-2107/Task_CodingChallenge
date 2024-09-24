@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,27 +44,44 @@ public class TaskController {
 
 	//Retrieve a single task by its ID
 	@GetMapping("/task/find/{id}")
-	public ResponseEntity<?> getTaskById(@PathVariable int id, MessageDto dto) {
+	public ResponseEntity<?> getTaskById(@PathVariable int id, MessageDto messagedto) {
 	    try {
 	        Task task = taskService.getTaskById(id);
 	        return ResponseEntity.ok(task);
 	    } catch (InvalidIdException e) {
-	        dto.setMsg(e.getMessage());
-	        return ResponseEntity.badRequest().body(dto);
+	        messagedto.setMsg(e.getMessage());
+	        return ResponseEntity.badRequest().body(messagedto);
 	    }
 	}
 	
 	//Delete a task by its ID
 	@DeleteMapping("/task/delete/{id}")
-	public ResponseEntity<?> deleteTask(@PathVariable int id, MessageDto dto) {
+	public ResponseEntity<?> deleteTask(@PathVariable int id, MessageDto messagedto) {
 	    try {
 	        taskService.deleteTask(id);
-	        dto.setMsg("Task Deleted Successfully.");
-	        return ResponseEntity.ok(dto);
+	        messagedto.setMsg("Task Deleted Successfully.");
+	        return ResponseEntity.ok(messagedto);
 	    } catch (InvalidIdException e) {
-	        dto.setMsg(e.getMessage());
-	        return ResponseEntity.badRequest().body(dto);
+	        messagedto.setMsg(e.getMessage());
+	        return ResponseEntity.badRequest().body(messagedto);
 	    }
 	}
 
+	//Update an existing task
+	@PutMapping("/task/update/{taskId}")
+    public ResponseEntity<?> updateTask(
+            @PathVariable int taskId,
+            @RequestBody Task newTask,
+            MessageDto messageDto) {
+        try {
+            Task updatedTask = taskService.updateTask(taskId, newTask);
+            return ResponseEntity.ok(updatedTask);
+        } catch (InvalidIdException e) {
+            messageDto.setMsg(e.getMessage());
+
+            // Return a bad request with the error message
+            return ResponseEntity.badRequest().body(messageDto);
+        
+    }
+	}
 }

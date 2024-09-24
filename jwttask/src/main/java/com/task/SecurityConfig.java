@@ -33,6 +33,7 @@ public class SecurityConfig {
                         .requestMatchers("/task/getallTasks").hasRole("ADMIN")
                         .requestMatchers("/task/find/{id}").hasRole("ADMIN")
                         .requestMatchers("/task/delete/{id}").hasRole("ADMIN")
+                        .requestMatchers("/task/update/{taskId}").hasRole("ADMIN")
                         
                         
                         .anyRequest().authenticated()
