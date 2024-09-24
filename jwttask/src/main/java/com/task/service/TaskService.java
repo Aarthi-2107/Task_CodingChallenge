@@ -43,6 +43,20 @@ public class TaskService {
         return optional.get();
     }
 	
+	//Delete a task by its ID
+	public void deleteTask(int taskId) throws InvalidIdException {
+        Optional<Task> optional = taskRepository.findById(taskId);
+        if (optional.isEmpty()) {
+            logger.error("Invalid Task ID found in request, Exception thrown.. ");
+            throw new InvalidIdException("Invalid Task ID Given");
+        }
+        logger.info("Task record deletion based on given ID: " + taskId);
+        logger.warn("Hard delete of task record");
+        taskRepository.deleteById(taskId);
+    }
+	
+	
+	
 
 
 }
